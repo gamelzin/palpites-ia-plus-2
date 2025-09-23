@@ -25,7 +25,7 @@ export default function PricingPage() {
         {/* Mensal */}
         <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
           <h3 className="text-2xl font-bold mb-4">Mensal</h3>
-          <p className="text-4xl font-extrabold text-green-600 mb-6">R$29,90</p>
+          <p className="text-4xl font-extrabold text-green-600 mb-6">R$49,90</p>
           <button
             onClick={() => handleCheckout("price_id_mensal")}
             className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
@@ -37,7 +37,7 @@ export default function PricingPage() {
         {/* Trimestral */}
         <div className="bg-white rounded-2xl shadow-lg p-8 text-center border-4 border-green-600">
           <h3 className="text-2xl font-bold mb-4">Trimestral</h3>
-          <p className="text-4xl font-extrabold text-green-600 mb-2">R$79,90</p>
+          <p className="text-4xl font-extrabold text-green-600 mb-2">R$129,90</p>
           <p className="text-sm text-green-600 mb-6">Economize 10%</p>
           <button
             onClick={() => handleCheckout("price_id_trimestral")}
@@ -50,7 +50,7 @@ export default function PricingPage() {
         {/* Anual */}
         <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
           <h3 className="text-2xl font-bold mb-4">Anual</h3>
-          <p className="text-4xl font-extrabold text-green-600 mb-2">R$249,90</p>
+          <p className="text-4xl font-extrabold text-green-600 mb-2">R$419,90</p>
           <p className="text-sm text-green-600 mb-6">Economize 30%</p>
           <button
             onClick={() => handleCheckout("price_id_anual")}
