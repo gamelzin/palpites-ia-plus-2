@@ -12,7 +12,7 @@ export default function Page() {
           estatísticas reais para aumentar suas chances.
         </p>
         <a
-          href="/https://buy.stripe.com/test_dRm4gs9fu3e343K8tU1Nu03"
+          href="/https://buy.stripe.com/5kQcMZgeN5FE5Nb7Gn0RG03"
           className="bg-white text-green-700 px-10 py-5 rounded-2xl text-xl font-bold shadow-lg hover:bg-gray-100 hover:scale-105 transform transition"
         >
           Quero receber os palpites
