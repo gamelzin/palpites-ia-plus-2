@@ -12,7 +12,7 @@ export default function Page() {
           estatísticas reais para aumentar suas chances.
         </p>
         <a
-          href="/pricing"
+          href="/https://buy.stripe.com/test_dRm4gs9fu3e343K8tU1Nu03"
           className="bg-white text-green-700 px-10 py-5 rounded-2xl text-xl font-bold shadow-lg hover:bg-gray-100 hover:scale-105 transform transition"
         >
           Quero receber os palpites
@@ -47,34 +47,58 @@ export default function Page() {
       </section>
 
       {/* Planos */}
-      <section className="py-20 px-6 bg-gray-100">
-        <h2 className="text-4xl font-bold text-center mb-12">Planos</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-lg p-8 text-center hover:scale-105 transition">
-            <h3 className="text-2xl font-bold mb-4">Mensal</h3>
-            <p className="text-4xl font-extrabold text-green-600 mb-6">R$29,90</p>
-            <a href="/pricing" className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition">
-              Assinar
-            </a>
-          </div>
-          <div className="bg-white rounded-2xl shadow-lg p-8 text-center border-4 border-green-600 hover:scale-105 transition">
-            <h3 className="text-2xl font-bold mb-4">Trimestral</h3>
-            <p className="text-4xl font-extrabold text-green-600 mb-2">R$79,90</p>
-            <p className="text-sm text-green-600 mb-6">Economize 10%</p>
-            <a href="/pricing" className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition">
-              Assinar
-            </a>
-          </div>
-          <div className="bg-white rounded-2xl shadow-lg p-8 text-center hover:scale-105 transition">
-            <h3 className="text-2xl font-bold mb-4">Anual</h3>
-            <p className="text-4xl font-extrabold text-green-600 mb-2">R$249,90</p>
-            <p className="text-sm text-green-600 mb-6">Economize 30%</p>
-            <a href="/pricing" className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition">
-              Assinar
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* Planos */}
+<section className="py-20 px-6 bg-gray-100">
+  <h2 className="text-4xl font-bold text-center mb-12">Planos</h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    
+    {/* Plano Mensal */}
+    <div className="bg-white rounded-2xl shadow-lg p-8 text-center hover:scale-105 transition">
+      <h3 className="text-2xl font-bold mb-4">Mensal</h3>
+      <p className="text-4xl font-extrabold text-green-600 mb-6">R$49,90</p>
+      <a
+        href="https://buy.stripe.com/cNi00d0fP3xwb7v2m30RG02"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
+      >
+        Assinar Mensal
+      </a>
+    </div>
+
+    {/* Plano Trimestral */}
+    <div className="bg-white rounded-2xl shadow-lg p-8 text-center border-4 border-green-600 hover:scale-105 transition">
+      <h3 className="text-2xl font-bold mb-4">Trimestral</h3>
+      <p className="text-4xl font-extrabold text-green-600 mb-2">R$129,90</p>
+      <p className="text-sm text-green-600 mb-6">Economize 13%</p>
+      <a
+        href="https://buy.stripe.com/5kQcMZgeN5FE5Nb7Gn0RG03"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
+      >
+        Assinar Trimestral
+      </a>
+    </div>
+
+    {/* Plano Anual */}
+    <div className="bg-white rounded-2xl shadow-lg p-8 text-center hover:scale-105 transition">
+      <h3 className="text-2xl font-bold mb-4">Anual</h3>
+      <p className="text-4xl font-extrabold text-green-600 mb-2">R$419,90</p>
+      <p className="text-sm text-green-600 mb-6">Economize 30%</p>
+      <a
+        href="https://buy.stripe.com/3cI3cpbYx5FE1wV0dV0RG04"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
+      >
+        Assinar Anual
+      </a>
+    </div>
+
+  </div>
+</section>
+
 
       {/* Rodapé */}
       <footer className="py-10 px-6 bg-gray-900 text-gray-300 text-center text-sm">
