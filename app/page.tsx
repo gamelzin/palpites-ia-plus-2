@@ -1,13 +1,17 @@
 "use client";
 
-export default function Home() {
-  return (
-    <main>
-      <h1>🚀 Palpites.IA atualizado!</h1>
-    </main>
-  )
-}
-
+export default function Pricing() {
+  const handleCheckout = async (priceId: string) => {
+    const res = await fetch("/api/checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ priceId }),
+    });
+    const data = await res.json();
+    if (data.url) {
+      window.location.href = data.url;
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">

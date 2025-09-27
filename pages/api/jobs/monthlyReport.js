@@ -1,5 +1,5 @@
-import { supabaseAdmin } from '../../../lib/supabase'
-import { sendWhatsApp, formatMonthlyReportMessage } from '../../../lib/twilio'
+import { sendWhatsAppMessage } from "../../../lib/whatsapp.360"
+
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
