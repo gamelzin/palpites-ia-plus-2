@@ -1,55 +1,48 @@
-import { NextRequest, NextResponse } from "next/server";
-import Stripe from "stripe";
+import { NextResponse } from "next/server"
+import Stripe from "stripe"
 
-export const runtime = "nodejs"; // Stripe precisa de runtime Node.js
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2023-10-16",
-});
+const priceMap: Record<string, string> = {
+  // ⚽ Futebol
+  football_monthly: process.env.STRIPE_PRICE_FOOTBALL_MONTHLY!,
+  football_quarterly: process.env.STRIPE_PRICE_FOOTBALL_QUARTERLY!,
+  football_yearly: process.env.STRIPE_PRICE_FOOTBALL_YEARLY!,
 
-/**
- * Mapeia cada price_id ao plano/sports para gravarmos no Supabase via webhook.
- * (Usando seus price_id reais)
- */
-const PLAN_BY_PRICE: Record<string, { plan: string; sports: string }> = {
-  // Futebol
-  "price_1SABXl8tnYbk8AGNGdIG7nkM": { plan: "football_monthly",   sports: "football" },
-  "price_1SABZ98tnYbk8AGNiaLEapDv": { plan: "football_quarterly", sports: "football" },
-  "price_1SABeJ8tnYbk8AGN6dCg8Nd2": { plan: "football_yearly",    sports: "football" },
+  // ⚽🏀 Combo Futebol + Basquete
+  combo_monthly: process.env.STRIPE_PRICE_COMBO_MONTHLY!,
+  combo_quarterly: process.env.STRIPE_PRICE_COMBO_QUARTERLY!,
+  combo_yearly: process.env.STRIPE_PRICE_COMBO_YEARLY!,
+}
 
-  // Combo Futebol + Basquete
-  "price_1SBgbM8tnYbk8AGN89wh2LRH": { plan: "combo_monthly",      sports: "football,basketball" },
-  "price_1SBgbz8tnYbk8AGNAsVmeuwb": { plan: "combo_quarterly",    sports: "football,basketball" },
-  "price_1SBgcV8tnYbk8AGNQkjFS4zg": { plan: "combo_yearly",       sports: "football,basketball" },
-};
-
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
-    const { priceId } = await req.json();
-    if (!priceId) {
-      return NextResponse.json({ error: "priceId é obrigatório" }, { status: 400 });
+    const { plan } = await req.json()
+
+    if (!plan || !priceMap[plan]) {
+      return NextResponse.json({ error: "Plano inválido" }, { status: 400 })
     }
 
-    const meta = PLAN_BY_PRICE[priceId] ?? { plan: "unknown", sports: "unknown" };
-
+    // Cria sessão de checkout
     const session = await stripe.checkout.sessions.create({
       mode: "subscription",
       payment_method_types: ["card"],
-      line_items: [{ price: priceId, quantity: 1 }],
-      // coleta telefone do cliente (útil pro WhatsApp/360dialog depois)
-      phone_number_collection: { enabled: true },
-      // metadados que o webhook vai receber
-      metadata: {
-        plan: meta.plan,
-        sports: meta.sports,
-      },
+      line_items: [
+        {
+          price: priceMap[plan],
+          quantity: 1,
+        },
+      ],
       success_url: `${process.env.BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.BASE_URL}/cancel`,
-    });
+    })
 
-    return NextResponse.json({ url: session.url });
+    return NextResponse.json({ url: session.url })
   } catch (err: any) {
-    console.error("Erro no checkout:", err.message);
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    console.error("Erro no checkout:", err)
+    return NextResponse.json(
+      { error: err.message || "Erro interno" },
+      { status: 500 }
+    )
   }
 }
